@@ -71,7 +71,7 @@ function createBoard (){
         function validateConflicts(currentEl, conflictItem){
 
             function finishGame(message){
-                setTimeout(() => {
+                setTimeout(() => {                                      
                     alert(message);
                     location.reload();
                 }, 100)
@@ -83,15 +83,15 @@ function createBoard (){
                     conflictItem?.item === 'mini-demon' ||
                     conflictItem?.item === 'trap'
                 ){
-                    finishGame("pau no seu cu");
+                    finishGame("Você morreu!!");
                 }
                 if(conflictItem?.item === 'chest'){
-                    finishGame("vai a merda");
+                    finishGame("Você venceu!!");
                 }
             }
 
-            if(currentEl.item === 'mini-demon' && conflictItem.item === 'hero'){
-                finishGame("morreu");
+            if(currentEl?.item === 'mini-demon' && conflictItem?.item === 'hero'){
+                finishGame("Você morreu!!");
             }
         }
 
@@ -155,13 +155,49 @@ function createBoard (){
 
 const board = createBoard()
 
-board.createItem({ item: 'trap', top: TILE_SIZE * 4, left: TILE_SIZE * 18 })
-board.createItem({ item: 'chest', top: TILE_SIZE * 15, left: TILE_SIZE * 6 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 4, left: TILE_SIZE * 2 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 6, left: TILE_SIZE * 18 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 9, left: TILE_SIZE * 5 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 13, left: TILE_SIZE * 15 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 16, left: TILE_SIZE * 13 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 16, left: TILE_SIZE * 8 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 7, left: TILE_SIZE * 8 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 10 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 12 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 6, left: TILE_SIZE * 12 })
+board.createItem({ item: 'trap', top: TILE_SIZE * 7, left: TILE_SIZE * 17 })
+
+board.createItem({ item: 'chest', top: TILE_SIZE * 2, left: TILE_SIZE * 18 })
 
 board.createItem({ item: 'forniture', top: TILE_SIZE * 17, left: TILE_SIZE * 2 })
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 8 })
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 16 })
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 3 })
 
+board.createEnemy({ top: TILE_SIZE * 10, left: TILE_SIZE * 2 })
+board.createEnemy({ top: TILE_SIZE * 4, left: TILE_SIZE * 5 })
+board.createEnemy({ top: TILE_SIZE * 6, left: TILE_SIZE * 6 })
+board.createEnemy({ top: TILE_SIZE * 8, left: TILE_SIZE * 16 })
+board.createEnemy({ top: TILE_SIZE * 9, left: TILE_SIZE * 18 })
+board.createEnemy({ top: TILE_SIZE * 13, left: TILE_SIZE * 2 })
+board.createEnemy({ top: TILE_SIZE * 15, left: TILE_SIZE * 5 })
+board.createEnemy({ top: TILE_SIZE * 17, left: TILE_SIZE * 8 })
+board.createEnemy({ top: TILE_SIZE * 6, left: TILE_SIZE * 13 })
+board.createEnemy({ top: TILE_SIZE * 3, left: TILE_SIZE * 14 })
+board.createEnemy({ top: TILE_SIZE * 9, left: TILE_SIZE * 6 })
+board.createEnemy({ top: TILE_SIZE * 4, left: TILE_SIZE * 16 })
+board.createEnemy({ top: TILE_SIZE * 6, left: TILE_SIZE * 17 })
+board.createEnemy({ top: TILE_SIZE * 9, left: TILE_SIZE * 15 })
+
 board.createHero({ top: TILE_SIZE * 16, left: TILE_SIZE * 2 })
-board.createEnemy({ top: TILE_SIZE * 10, left: TILE_SIZE * 10 })
+
+
+
+const reset = document.querySelector('.reset')
+
+function resetPosition (){
+    reset.addEventListener('click', () => {
+        location.reload()
+    })
+}
+resetPosition()
